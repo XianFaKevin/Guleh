@@ -1,0 +1,179 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.orange.guleh.AddActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:text="选择车品牌"/>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vf"
+        android:layout_below="@+id/header">
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newBrandQuestion"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:text="车品牌已在资料库？"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/selectBrand"
+                android:orientation="horizontal"
+                android:layout_below="@+id/newBrandQuestion">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/existingBrand"
+                    android:text="是"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/newBrand"
+                    android:text="否"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/brandLabel"
+                android:layout_below="@+id/selectBrand"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:text="车品牌："/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editBrandName"
+                android:layout_toRightOf="@+id/brandLabel"
+                android:layout_below="@+id/selectBrand"
+                android:visibility="gone"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseBrandName"
+                android:layout_toRightOf="@+id/brandLabel"
+                android:layout_below="@+id/selectBrand"
+                android:prompt="@string/brand_prompt">
+                </Spinner>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/backBtn1"
+                android:text="back"
+                android:layout_below="@+id/brandLabel"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nextBtn1"
+                android:text="next"
+                android:layout_below="@+id/brandLabel"
+                android:layout_toRightOf="@+id/backBtn1"/>
+
+        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newModelQuestionFrame">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/newModelQuestion"
+                    android:text="车模式已在资料库？"/>
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/selectModel"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/newModelQuestion">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/existingModel"
+                        android:text="是"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/newModel"
+                        android:text="否"/>
+                </RadioGroup>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/modelLabel"
+                android:layout_below="@+id/newModelQuestionFrame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:text="车模式："/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editModelName"
+                android:layout_toRightOf="@+id/modelLabel"
+                android:layout_below="@+id/newModelQuestionFrame"
+                android:visibility="gone"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseModelName"
+                android:layout_toRightOf="@+id/modelLabel"
+                android:layout_below="@+id/newModelQuestionFrame"
+                android:prompt="@string/model_prompt">
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/codeLabel"
+                android:layout_below="@+id/newModelQuestionFrame"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:text="车模式code："/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editCodeName"
+                android:layout_toRightOf="@+id/modelLabel"
+                android:layout_below="@+id/newModelQuestionFrame"
+                android:visibility="gone"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseCodeName"
+                android:layout_toRightOf="@+id/modelLabel"
+                android:layout_below="@+id/newModelQuestionFrame"
+                android:prompt="@string/code_prompt">
+            </Spinner>
+
+
+            </RelativeLayout>
+
+        </ViewFlipper>
+
+</RelativeLayout>
