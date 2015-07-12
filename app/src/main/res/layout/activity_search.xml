@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.orange.guleh.SearchActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brandFrame">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:id="@+id/brandLabel"
+            android:text="车品牌："/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chooseBrand"
+            android:layout_toRightOf="@+id/brandLabel"
+            android:prompt="@string/brand_prompt"
+            android:entries="@array/years">
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/modelFrame"
+        android:layout_below="@+id/brandFrame">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:id="@+id/modelLabel"
+            android:text="车款式："/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chooseModel"
+            android:layout_toRightOf="@+id/modelLabel"
+            android:prompt="@string/brand_prompt"
+            android:entries="@array/years">
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yearFrame"
+        android:layout_below="@+id/modelFrame">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:id="@+id/yearLabel"
+            android:text="车年份："/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chooseYear"
+            android:layout_toRightOf="@+id/yearLabel"
+            android:prompt="@string/brand_prompt"
+            android:entries="@array/years">
+        </Spinner>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:id="@+id/codeLabel"
+        android:layout_below="@+id/yearFrame"
+        android:text="号码："/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chooseCode"
+        android:layout_below="@+id/yearFrame"
+        android:layout_toRightOf="@+id/codeLabel"
+        android:prompt="@string/brand_prompt"
+        android:entries="@array/years">
+    </Spinner>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查价钱"
+        android:id="@+id/button"
+        android:layout_below="@+id/chooseCode"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

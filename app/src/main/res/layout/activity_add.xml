@@ -14,48 +14,55 @@
 
     <ViewFlipper
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/vf"
         android:layout_below="@+id/header">
 
-        <!--<RelativeLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/newBrandQuestion"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"
-                android:text="车品牌已在资料库？"/>
+                android:id="@+id/newBrandQuestionFrame">
 
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/selectBrand"
-                android:orientation="horizontal"
-                android:layout_below="@+id/newBrandQuestion">
-
-                <RadioButton
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/existingBrand"
-                    android:text="是"/>
+                    android:id="@+id/newBrandQuestion"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"
+                    android:text="车品牌已在资料库？"/>
 
-                <RadioButton
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/newBrand"
-                    android:text="否"/>
+                    android:id="@+id/selectBrand"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/newBrandQuestion">
 
-            </RadioGroup>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/existingBrand"
+                        android:text="是"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/newBrand"
+                        android:text="否"/>
+
+                </RadioGroup>
+
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/brandLabel"
-                android:layout_below="@+id/selectBrand"
+                android:layout_below="@+id/newBrandQuestionFrame"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
                 android:text="车品牌："/>
@@ -64,32 +71,18 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/editBrandName"
                 android:layout_toRightOf="@+id/brandLabel"
-                android:layout_below="@+id/selectBrand"
-                android:visibility="gone"/>
+                android:layout_below="@+id/newBrandQuestionFrame"/>
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/chooseBrandName"
                 android:layout_toRightOf="@+id/brandLabel"
-                android:layout_below="@+id/selectBrand"
+                android:layout_below="@+id/newBrandQuestionFrame"
                 android:prompt="@string/brand_prompt">
-                </Spinner>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/backBtn1"
-                android:text="back"
-                android:layout_below="@+id/brandLabel"/>
+            </Spinner>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/nextBtn1"
-                android:text="next"
-                android:layout_below="@+id/brandLabel"
-                android:layout_toRightOf="@+id/backBtn1"/>
 
-        </RelativeLayout>-->
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -147,33 +140,142 @@
                 android:prompt="@string/model_prompt">
             </Spinner>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/codeLabel"
-                android:layout_below="@+id/newModelQuestionFrame"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold"
-                android:text="车模式code："/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editCodeName"
-                android:layout_toRightOf="@+id/modelLabel"
-                android:layout_below="@+id/newModelQuestionFrame"
-                android:visibility="gone"/>
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chooseCodeName"
-                android:layout_toRightOf="@+id/modelLabel"
-                android:layout_below="@+id/newModelQuestionFrame"
-                android:prompt="@string/code_prompt">
-            </Spinner>
+        </RelativeLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/errorFrame"
+                    android:background="@color/red">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"
+                        android:id="@+id/errorHeader"
+                        android:text="输入错误"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_below="@+id/errorHeader"
+                        android:id="@+id/errorMsg"/>
+                    </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/carBrandLabel"
+                    android:layout_below="@+id/errorFrame"
+                    android:text="车品牌："/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/carBrandText"
+                    android:layout_below="@+id/errorFrame"
+                    android:layout_toRightOf="@+id/carBrandLabel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/carModelLabel"
+                    android:layout_below="@+id/carBrandLabel"
+                    android:text="车款式："/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/carModelText"
+                    android:layout_below="@+id/carBrandLabel"
+                    android:layout_toRightOf="@+id/carModelLabel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/carYearLabel"
+                    android:layout_below="@+id/carModelLabel"
+                    android:text="车年份：" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/carYearText"
+                    android:maxLength="4"
+                    android:layout_below="@+id/carModelLabel"
+                    android:layout_toRightOf="@+id/carYearLabel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/productCodeLabel"
+                    android:layout_below="@+id/carYearLabel"
+                    android:text="号码：" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/productCodeText"
+                    android:layout_below="@+id/carYearLabel"
+                    android:layout_toRightOf="@+id/productCodeLabel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/productPriceLabel"
+                    android:layout_below="@+id/productCodeLabel"
+                    android:text="价钱："/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/productPriceText"
+                    android:layout_below="@+id/productCodeLabel"
+                    android:layout_toRightOf="@+id/productPriceLabel"/>
 
             </RelativeLayout>
 
-        </ViewFlipper>
+        </ScrollView>
+
+    </ViewFlipper>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backBtn"
+        android:text="back"
+        android:layout_below="@+id/vf"
+        android:layout_toLeftOf="@+id/dummyView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/dummyView"
+        android:text="qqqqq"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/vf"
+        android:visibility="invisible"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextBtn"
+        android:text="next"
+        android:layout_below="@+id/vf"
+        android:layout_toRightOf="@+id/dummyView"/>
 
 </RelativeLayout>

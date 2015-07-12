@@ -7,20 +7,12 @@ import java.sql.Blob;
  */
 public class Product {
 
-    int id;
     String brand;
     String code;
-    String name;
+    String model;
+    int year;
     double price;
     Blob image;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getBrand() {
         return brand;
@@ -38,20 +30,28 @@ public class Product {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(int price) {
+        this.price = (double) price/100;
     }
 
     public Blob getImage() {

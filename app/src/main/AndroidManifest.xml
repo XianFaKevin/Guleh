@@ -20,6 +20,14 @@
             android:name=".AddActivity"
             android:label="@string/title_activity_add" >
         </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".DisplayProductActivity"
+            android:label="@string/title_activity_display_product" >
+        </activity>
     </application>
 
 </manifest>

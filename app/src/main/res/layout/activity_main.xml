@@ -1,13 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context=".MainActivity">
+    android:layout_height="match_parent" tools:context=".MainActivity" android:background="@drawable/orange"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
 
-
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add New"
         android:id="@+id/addBtn"
+        bootstrap:bb_type="primary"
         android:layout_centerInParent="true" />
 
     <Button
@@ -17,6 +18,15 @@
         android:id="@+id/searchBtn"
         android:layout_below="@+id/addBtn"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="@dimen/btnSize"
+        android:layout_height="@dimen/btnSize"
+        android:background="@drawable/setting"
+        android:id="@+id/settingsBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
 
 
 </RelativeLayout>
