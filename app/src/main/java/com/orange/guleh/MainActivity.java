@@ -16,7 +16,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 public class MainActivity extends Activity {
 
     BootstrapButton addBtn;
-    Button searchBtn;
+    BootstrapButton searchBtn;
     Button settingsBtn;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
 
@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        searchBtn = (Button) findViewById(R.id.searchBtn);
+        searchBtn = (BootstrapButton) findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

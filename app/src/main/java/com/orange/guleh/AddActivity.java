@@ -16,39 +16,43 @@ import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
+import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 
 public class AddActivity extends Activity {
 
     // general variables
     TextView header;
     ViewFlipper vf;
-    Button backBtn;
-    Button nextBtn;
+    BootstrapButton backBtn;
+    BootstrapButton nextBtn;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
     ArrayList<String> brands;
     ArrayList<String> models;
     Product pdt;
+    boolean gotItem;
 
     // brand select page
     RelativeLayout bQFrame;
     RadioGroup selectBrand;
     RadioButton existingBrand, newBrand;
-    EditText editBrandName;
+    BootstrapEditText editBrandName;
     Spinner chooseBrandName;
 
     // model select page
     RelativeLayout mQFrame;
     RadioGroup selectModel;
     RadioButton existingModel, newModel;
-    EditText editModelName;
+    BootstrapEditText editModelName;
     Spinner chooseModelName;
 
     // product finalize page
     TextView carBrand;
     TextView carModel;
-    EditText carYear;
-    EditText pdtCode;
-    EditText pdtPrice;
+    BootstrapEditText carYear;
+    BootstrapEditText pdtCode;
+    BootstrapEditText pdtPrice;
     RelativeLayout errorFrame;
     TextView errorMsg;
 
@@ -67,17 +71,15 @@ public class AddActivity extends Activity {
         brands = new ArrayList<String>();
         models = new ArrayList<String>();
         brands = dbHelper.listBrands();
-        /*for (int i=0; i<list.size(); i++) {
-            brands.add(list.get(i).getBrand());
-            models.add(list.get(i).getModel());
-        }*/
+        if (brands.isEmpty()) gotItem = false;
+        else gotItem = true;
 
         /**
          * Brand select page
          */
         bQFrame = (RelativeLayout) findViewById(R.id.newBrandQuestionFrame);
         selectBrand = (RadioGroup) findViewById(R.id.selectBrand);
-        editBrandName = (EditText) findViewById(R.id.editBrandName);
+        editBrandName = (BootstrapEditText) findViewById(R.id.editBrandName);
         chooseBrandName = (Spinner) findViewById(R.id.chooseBrandName);
         selectBrand.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -99,7 +101,7 @@ public class AddActivity extends Activity {
          */
         mQFrame = (RelativeLayout) findViewById(R.id.newModelQuestionFrame);
         selectModel = (RadioGroup) findViewById(R.id.selectModel);
-        editModelName = (EditText) findViewById(R.id.editModelName);
+        editModelName = (BootstrapEditText) findViewById(R.id.editModelName);
         chooseModelName = (Spinner) findViewById(R.id.chooseModelName);
         newModel = (RadioButton) findViewById(R.id.newModel);
         existingModel = (RadioButton) findViewById(R.id.existingModel);
@@ -121,31 +123,29 @@ public class AddActivity extends Activity {
          */
         carBrand = (TextView) findViewById(R.id.carBrandText);
         carModel = (TextView) findViewById(R.id.carModelText);
-        carYear = (EditText) findViewById(R.id.carYearText);
-        pdtCode = (EditText) findViewById(R.id.productCodeText);
-        pdtPrice = (EditText) findViewById(R.id.productPriceText);
+        carYear = (BootstrapEditText) findViewById(R.id.carYearText);
+        pdtCode = (BootstrapEditText) findViewById(R.id.productCodeText);
+        pdtPrice = (BootstrapEditText) findViewById(R.id.productPriceText);
         errorFrame = (RelativeLayout) findViewById(R.id.errorFrame);
         errorMsg = (TextView) findViewById(R.id.errorMsg);
 
         // all functions to be init below after variables have been assigned
         gBrandForm();
 
-        nextBtn = (Button) findViewById(R.id.nextBtn);
+        nextBtn = (BootstrapButton) findViewById(R.id.nextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (vf.getDisplayedChild() == 0) {
                     int selectedId = selectBrand.getCheckedRadioButtonId();
-                    Log.d("selectedId: ", String.valueOf(selectedId));
-                    Log.d("new brand id: ", String.valueOf(newBrand.getId()));
+
                     if (selectedId == newBrand.getId()) {
                         pdt.setBrand(editBrandName.getText().toString());
-                        gModelForm(true);
                     }
                     else {
                         pdt.setBrand(chooseBrandName.getSelectedItem().toString());
-                        gModelForm(false);
                     }
+                    gModelForm();
                     carBrand.setText(pdt.getBrand());
                 } else if (vf.getDisplayedChild() == 1) {
                     Log.d("selectedId2: ", String.valueOf(selectModel.getCheckedRadioButtonId()));
@@ -153,11 +153,11 @@ public class AddActivity extends Activity {
                     int selectedId2 = selectModel.getCheckedRadioButtonId();
                     if (selectedId2 == newModel.getId()) {
                         pdt.setModel(editModelName.getText().toString());
-                        gProductForm(true);
+                        gProductForm();
                     }
                     else {
                         pdt.setModel((chooseModelName.getSelectedItem().toString()));
-                        gProductForm(false);
+                        gProductForm();
                     }
                     carModel.setText(pdt.getModel());
                 } else if (vf.getDisplayedChild() == 2) {
@@ -166,10 +166,25 @@ public class AddActivity extends Activity {
 
             }
         });
+
+        backBtn = (BootstrapButton) findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (vf.getDisplayedChild() == 0) {
+                    finish();
+                } else if (vf.getDisplayedChild() == 1) {
+                    gBrandForm();
+                } else if (vf.getDisplayedChild() == 2) {
+                    gModelForm();
+                }
+            }
+        });
     }
 
     public void gBrandForm() {
-        if (brands.size() == 0) {
+        vf.setDisplayedChild(0);
+        if (!gotItem) {
             selectBrand.check(R.id.newBrand);
             bQFrame.setVisibility(View.GONE);
             chooseBrandName.setVisibility(View.GONE);
@@ -184,19 +199,23 @@ public class AddActivity extends Activity {
         }
     }
 
-    public void gModelForm(boolean newBrand) {
+    public void gModelForm() {
+        boolean setNewBrand;
+        if (selectBrand.getCheckedRadioButtonId() == R.id.newBrand) setNewBrand = true;
+        else setNewBrand = false;
         header.setText("选择车款式");
         vf.setDisplayedChild(1);
         Log.d("Brand name: ", pdt.getBrand().toString());
         models = dbHelper.listModels(pdt.getBrand());
         Log.d("models size: ", String.valueOf(models.size()));
-        if (newBrand) {
+        if (setNewBrand) {
             selectModel.check(R.id.newModel);
             mQFrame.setVisibility(View.GONE);
             chooseModelName.setVisibility(View.GONE);
             editModelName.setVisibility(View.VISIBLE);
         } else {
             selectModel.check(R.id.existingModel);
+            mQFrame.setVisibility(View.VISIBLE);
             ArrayAdapter dataAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, models);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             chooseModelName.setAdapter(dataAdapter);
@@ -205,8 +224,8 @@ public class AddActivity extends Activity {
         }
     }
 
-    public void gProductForm(boolean newModel) {
-        header.setText("Bodykit 资料 form");
+    public void gProductForm() {
+        header.setText("Bodykit 资料");
         nextBtn.setText("完成");
         vf.setDisplayedChild(2);
     }

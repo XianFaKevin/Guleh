@@ -5,8 +5,16 @@
 
     <dimen name="btnSize">50dp</dimen>
 
+    <dimen name="textSmall">15sp</dimen>
+    <dimen name="textMedium">25sp</dimen>
+    <dimen name="textLarge">35sp</dimen>
+    <dimen name="textHeader">45sp</dimen>
+
     <dimen name="padding_micro">4dp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">12dp</dimen>
     <dimen name="padding_large">16dp</dimen>
+
+    <dimen name="textBox">150dp</dimen>
+    <dimen name="textBoxYear">70dp</dimen>
 </resources>

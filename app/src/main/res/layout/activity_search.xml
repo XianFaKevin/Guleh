@@ -1,25 +1,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.guleh.SearchActivity">
+    android:layout_height="match_parent" tools:context="com.orange.guleh.SearchActivity"
+    android:background="@drawable/orange2" xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:text="Bodykit 搜索"
+        android:textStyle="italic|bold"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/textHeader"
+        android:textColor="@color/teal"
+        android:padding="@dimen/padding_large"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/brandFrame">
+        android:id="@+id/brandFrame"
+        android:layout_below="@+id/header">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
+            android:textColor="@color/cyan4"
+            android:textSize="@dimen/textMedium"
             android:id="@+id/brandLabel"
-            android:text="车品牌："/>
+            android:text="车品牌："
+            android:padding="@dimen/padding_medium"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/chooseBrand"
             android:layout_toRightOf="@+id/brandLabel"
             android:prompt="@string/brand_prompt"
-            android:entries="@array/years">
+            android:entries="@array/years"
+            android:background="@android:drawable/btn_dropdown"
+            android:padding="@dimen/padding_medium">
         </Spinner>
     </RelativeLayout>
 
@@ -31,17 +47,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
+            android:textColor="@color/cyan4"
+            android:textSize="@dimen/textMedium"
             android:id="@+id/modelLabel"
-            android:text="车款式："/>
+            android:text="车款式："
+            android:padding="@dimen/padding_medium"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/chooseModel"
             android:layout_toRightOf="@+id/modelLabel"
             android:prompt="@string/brand_prompt"
-            android:entries="@array/years">
+            android:entries="@array/years"
+            android:background="@android:drawable/btn_dropdown"
+            android:padding="@dimen/padding_medium">
         </Spinner>
     </RelativeLayout>
 
@@ -53,28 +72,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
+            android:textColor="@color/cyan4"
+            android:textSize="@dimen/textMedium"
             android:id="@+id/yearLabel"
-            android:text="车年份："/>
+            android:text="车年份："
+            android:padding="@dimen/padding_medium"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/chooseYear"
             android:layout_toRightOf="@+id/yearLabel"
             android:prompt="@string/brand_prompt"
-            android:entries="@array/years">
+            android:entries="@array/years"
+            android:background="@android:drawable/btn_dropdown"
+            android:padding="@dimen/padding_medium">
         </Spinner>
     </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold"
+        android:textColor="@color/cyan4"
+        android:textSize="@dimen/textMedium"
         android:id="@+id/codeLabel"
         android:layout_below="@+id/yearFrame"
-        android:text="号码："/>
+        android:text="kit号码："
+        android:padding="@dimen/padding_medium"/>
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,15 +105,19 @@
         android:layout_below="@+id/yearFrame"
         android:layout_toRightOf="@+id/codeLabel"
         android:prompt="@string/brand_prompt"
-        android:entries="@array/years">
+        android:entries="@array/years"
+        android:background="@android:drawable/btn_dropdown"
+        android:padding="@dimen/padding_medium">
     </Spinner>
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="查价钱"
         android:id="@+id/button"
         android:layout_below="@+id/chooseCode"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        bootstrap:bb_type="primary"
+        android:padding="@dimen/padding_large"/>
 
 </RelativeLayout>

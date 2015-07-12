@@ -1,16 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.guleh.AddActivity">
+    android:layout_height="match_parent" tools:context="com.orange.guleh.AddActivity"
+    android:background="@drawable/orange4" xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/header"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/textHeader"
+        android:textColor="@color/teal"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:text="选择车品牌"/>
+        android:text="选择车品牌"
+        android:padding="@dimen/padding_large"/>
 
     <ViewFlipper
         android:layout_width="match_parent"
@@ -33,26 +37,38 @@
                     android:id="@+id/newBrandQuestion"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold"
-                    android:text="车品牌已在资料库？"/>
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
+                    android:text="车品牌已在资料库？"
+                    android:padding="@dimen/padding_medium"/>
 
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/selectBrand"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/newBrandQuestion">
+                    android:layout_below="@+id/newBrandQuestion"
+                    android:padding="@dimen/padding_medium">
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/existingBrand"
-                        android:text="是"/>
+                        android:text="是"
+                        android:textColor="@color/cyan4"
+                        android:textSize="@dimen/textMedium"
+                        android:textStyle="bold"
+                        android:padding="@dimen/padding_medium"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/newBrand"
-                        android:text="否"/>
+                        android:text="否"
+                        android:textColor="@color/cyan4"
+                        android:textSize="@dimen/textMedium"
+                        android:textStyle="bold"
+                        android:padding="@dimen/padding_medium"/>
 
                 </RadioGroup>
 
@@ -63,22 +79,27 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/brandLabel"
                 android:layout_below="@+id/newBrandQuestionFrame"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
-                android:text="车品牌："/>
-            <EditText
-                android:layout_width="wrap_content"
+                android:textColor="@color/cyan4"
+                android:textSize="@dimen/textMedium"
+                android:text="车品牌："
+                android:padding="@dimen/padding_medium"/>
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:layout_width="@dimen/textBox"
                 android:layout_height="wrap_content"
                 android:id="@+id/editBrandName"
                 android:layout_toRightOf="@+id/brandLabel"
-                android:layout_below="@+id/newBrandQuestionFrame"/>
+                android:layout_below="@+id/newBrandQuestionFrame"
+                android:padding="@dimen/padding_medium"/>
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/chooseBrandName"
                 android:layout_toRightOf="@+id/brandLabel"
                 android:layout_below="@+id/newBrandQuestionFrame"
-                android:prompt="@string/brand_prompt">
+                android:prompt="@string/brand_prompt"
+                android:background="@android:drawable/btn_dropdown"
+                android:padding="@dimen/padding_medium">
             </Spinner>
 
 
@@ -96,23 +117,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/newModelQuestion"
-                    android:text="车模式已在资料库？"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
+                    android:text="车模式已在资料库？"
+                    android:padding="@dimen/padding_medium"/>
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/selectModel"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/newModelQuestion">
+                    android:layout_below="@+id/newModelQuestion"
+                    android:padding="@dimen/padding_medium">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/existingModel"
-                        android:text="是"/>
+                        android:text="是"
+                        android:textColor="@color/cyan4"
+                        android:textSize="@dimen/textMedium"
+                        android:textStyle="bold"
+                        android:padding="@dimen/padding_medium"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/newModel"
-                        android:text="否"/>
+                        android:text="否"
+                        android:textColor="@color/cyan4"
+                        android:textSize="@dimen/textMedium"
+                        android:textStyle="bold"
+                        android:padding="@dimen/padding_medium"/>
                 </RadioGroup>
             </RelativeLayout>
 
@@ -121,23 +155,28 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/modelLabel"
                 android:layout_below="@+id/newModelQuestionFrame"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/cyan4"
+                android:textSize="@dimen/textMedium"
                 android:textStyle="bold"
-                android:text="车模式："/>
-            <EditText
-                android:layout_width="wrap_content"
+                android:text="车模式："
+                android:padding="@dimen/padding_medium"/>
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:layout_width="@dimen/textBox"
                 android:layout_height="wrap_content"
                 android:id="@+id/editModelName"
                 android:layout_toRightOf="@+id/modelLabel"
                 android:layout_below="@+id/newModelQuestionFrame"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:padding="@dimen/padding_medium"/>
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/chooseModelName"
                 android:layout_toRightOf="@+id/modelLabel"
                 android:layout_below="@+id/newModelQuestionFrame"
-                android:prompt="@string/model_prompt">
+                android:prompt="@string/model_prompt"
+                android:background="@android:drawable/btn_dropdown"
+                android:padding="@dimen/padding_medium">
             </Spinner>
 
         </RelativeLayout>
@@ -155,19 +194,19 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                     android:id="@+id/errorFrame"
-                    android:background="@color/red">
+                    android:background="@color/red2">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="@dimen/textLarge"
                         android:textStyle="bold"
                         android:id="@+id/errorHeader"
                         android:text="输入错误"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="@dimen/textMedium"
                         android:layout_below="@+id/errorHeader"
                         android:id="@+id/errorMsg"/>
                     </RelativeLayout>
@@ -175,78 +214,97 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/carBrandLabel"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
+                    android:textStyle="bold"
                     android:layout_below="@+id/errorFrame"
-                    android:text="车品牌："/>
+                    android:text="车品牌："
+                    android:padding="@dimen/padding_medium"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
                     android:id="@+id/carBrandText"
                     android:layout_below="@+id/errorFrame"
-                    android:layout_toRightOf="@+id/carBrandLabel"/>
+                    android:layout_toRightOf="@+id/carBrandLabel"
+                    android:padding="@dimen/padding_medium"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
                     android:id="@+id/carModelLabel"
+                    android:textStyle="bold"
                     android:layout_below="@+id/carBrandLabel"
-                    android:text="车款式："/>
+                    android:text="车款式："
+                    android:padding="@dimen/padding_medium"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
                     android:id="@+id/carModelText"
                     android:layout_below="@+id/carBrandLabel"
-                    android:layout_toRightOf="@+id/carModelLabel"/>
+                    android:layout_toRightOf="@+id/carModelLabel"
+                    android:padding="@dimen/padding_medium"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
                     android:id="@+id/carYearLabel"
+                    android:textStyle="bold"
                     android:layout_below="@+id/carModelLabel"
-                    android:text="车年份：" />
-                <EditText
-                    android:layout_width="wrap_content"
+                    android:text="车年份："
+                    android:padding="@dimen/padding_medium"/>
+                <com.beardedhen.androidbootstrap.BootstrapEditText
+                    android:layout_width="@dimen/textBoxYear"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/carYearText"
                     android:maxLength="4"
                     android:layout_below="@+id/carModelLabel"
-                    android:layout_toRightOf="@+id/carYearLabel"/>
+                    android:layout_toRightOf="@+id/carYearLabel"
+                    android:padding="@dimen/padding_medium"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
                     android:id="@+id/productCodeLabel"
+                    android:textStyle="bold"
                     android:layout_below="@+id/carYearLabel"
-                    android:text="号码：" />
-                <EditText
-                    android:layout_width="wrap_content"
+                    android:text="号码："
+                    android:padding="@dimen/padding_medium"/>
+                <com.beardedhen.androidbootstrap.BootstrapEditText
+                    android:layout_width="@dimen/textBox"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/productCodeText"
                     android:layout_below="@+id/carYearLabel"
-                    android:layout_toRightOf="@+id/productCodeLabel"/>
+                    android:layout_toRightOf="@+id/productCodeLabel"
+                    android:padding="@dimen/padding_medium"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/cyan4"
+                    android:textSize="@dimen/textMedium"
+                    android:textStyle="bold"
                     android:id="@+id/productPriceLabel"
                     android:layout_below="@+id/productCodeLabel"
-                    android:text="价钱："/>
-                <EditText
-                    android:layout_width="wrap_content"
+                    android:text="价钱："
+                    android:padding="@dimen/padding_medium"/>
+                <com.beardedhen.androidbootstrap.BootstrapEditText
+                    android:layout_width="@dimen/textBox"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/productPriceText"
                     android:layout_below="@+id/productCodeLabel"
-                    android:layout_toRightOf="@+id/productPriceLabel"/>
+                    android:layout_toRightOf="@+id/productPriceLabel"
+                    android:padding="@dimen/padding_medium"/>
 
             </RelativeLayout>
 
@@ -254,11 +312,13 @@
 
     </ViewFlipper>
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/backBtn"
-        android:text="back"
+        android:text="返回"
+        bootstrap:bb_type="primary"
+        android:padding="@dimen/padding_large"
         android:layout_below="@+id/vf"
         android:layout_toLeftOf="@+id/dummyView"/>
     <TextView
@@ -270,11 +330,13 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/vf"
         android:visibility="invisible"/>
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/nextBtn"
-        android:text="next"
+        android:text="继续"
+        bootstrap:bb_type="primary"
+        android:padding="@dimen/padding_large"
         android:layout_below="@+id/vf"
         android:layout_toRightOf="@+id/dummyView"/>
 

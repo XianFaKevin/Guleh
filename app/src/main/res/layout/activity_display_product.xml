@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.guleh.DisplayProductActivity">
+    android:layout_height="match_parent" tools:context="com.orange.guleh.DisplayProductActivity"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:background="@drawable/orange">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,15 +11,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/teal"
+            android:textSize="@dimen/textHeader"
+            android:padding="@dimen/padding_large"
             android:textStyle="bold"
             android:id="@+id/codeHeader"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/textMedium"
             android:textStyle="bold"
+            android:padding="@dimen/padding_medium"
+            android:textColor="@color/cyan4"
             android:text="价钱：$"
             android:id="@+id/priceLabel"
             android:layout_below="@+id/codeHeader"/>
@@ -26,21 +31,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/textMedium"
             android:textStyle="bold"
+            android:padding="@dimen/padding_medium"
+            android:textColor="@color/cyan4"
             android:id="@+id/priceText"
             android:layout_toRightOf="@+id/priceLabel"
             android:layout_below="@+id/codeHeader"/>
 
     </RelativeLayout>
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="返回"
         android:id="@+id/backBtn"
         android:layout_toLeftOf="@+id/dummyView"
-        android:layout_below="@+id/displayFrame"/>
+        android:layout_below="@+id/displayFrame"
+        bootstrap:bb_type="primary"
+        android:padding="@dimen/padding_large"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,12 +61,14 @@
         android:layout_below="@+id/displayFrame"
         android:visibility="invisible"/>
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="主菜单"
         android:id="@+id/menuBtn"
         android:layout_toRightOf="@+id/dummyView"
-        android:layout_below="@+id/displayFrame"/>
+        android:layout_below="@+id/displayFrame"
+        bootstrap:bb_type="primary"
+        android:padding="@dimen/padding_large"/>
 
 </RelativeLayout>

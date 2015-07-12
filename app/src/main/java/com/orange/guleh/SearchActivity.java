@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 import java.util.ArrayList;
 
 
@@ -31,7 +33,7 @@ public class SearchActivity extends Activity {
     RelativeLayout modelFrame;
     RelativeLayout yearFrame;
     Product pdt;
-    Button btn;
+    BootstrapButton btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class SearchActivity extends Activity {
         models = new ArrayList<String>();
         years = new ArrayList<String>();
         pdt = new Product();
-        btn = (Button) findViewById(R.id.button);
+        btn = (BootstrapButton) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

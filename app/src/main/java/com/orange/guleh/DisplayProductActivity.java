@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 
 public class DisplayProductActivity extends Activity {
 
@@ -18,8 +20,8 @@ public class DisplayProductActivity extends Activity {
     Product pdt;
     TextView codeHead;
     TextView priceText;
-    Button menuBtn;
-    Button backBtn;
+    BootstrapButton menuBtn;
+    BootstrapButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,8 @@ public class DisplayProductActivity extends Activity {
 
         codeHead = (TextView) findViewById(R.id.codeHeader);
         priceText = (TextView) findViewById(R.id.priceText);
-        menuBtn = (Button) findViewById(R.id.menuBtn);
-        backBtn = (Button) findViewById(R.id.backBtn);
+        menuBtn = (BootstrapButton) findViewById(R.id.menuBtn);
+        backBtn = (BootstrapButton) findViewById(R.id.backBtn);
 
         codeHead.setText(pdt.getCode());
         priceText.setText(String.valueOf(pdt.getPrice()));
