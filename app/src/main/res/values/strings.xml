@@ -51,5 +51,6 @@
 
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_display_product">DisplayProductActivity</string>
+    <string name="title_activity_edit">EditActivity</string>
 
 </resources>

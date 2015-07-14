@@ -28,6 +28,10 @@
             android:name=".DisplayProductActivity"
             android:label="@string/title_activity_display_product" >
         </activity>
+        <activity
+            android:name=".EditActivity"
+            android:label="@string/title_activity_edit" >
+        </activity>
     </application>
 
 </manifest>

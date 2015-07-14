@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.orange.guleh.AddActivity"
-    android:background="@drawable/orange4" xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/orange4" xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rr" android:padding="5dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,313 +14,78 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:text="选择车品牌"
+        android:text="输入新kit"
         android:padding="@dimen/padding_large"/>
 
-    <ViewFlipper
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/vf"
-        android:layout_below="@+id/header">
+        android:visibility="gone"
+        android:id="@+id/errorFrame"
+        android:layout_below="@+id/header"
+        android:background="@color/red2"
+        android:layout_marginBottom="@dimen/padding_medium">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/textLarge"
+            android:textStyle="bold"
+            android:id="@+id/errorHeader"
+            android:text="输入错误"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium"
+            android:layout_below="@+id/errorHeader"
+            android:id="@+id/errorMsg"/>
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/codeLabel"
+        android:layout_below="@+id/errorFrame"
+        android:text="号码"
+        android:textStyle="bold"
+        android:textSize="@dimen/textMedium"
+        android:padding="@dimen/padding_medium"/>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/newBrandQuestionFrame">
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="@dimen/textBox"
+        android:layout_height="wrap_content"
+        android:id="@+id/codeText"
+        android:layout_below="@+id/errorFrame"
+        android:layout_toRightOf="@+id/codeLabel"
+        android:padding="@dimen/padding_medium"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/newBrandQuestion"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:text="车品牌已在资料库？"
-                    android:padding="@dimen/padding_medium"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceLabel"
+        android:layout_below="@+id/codeLabel"
+        android:text="价钱"
+        android:textStyle="bold"
+        android:textSize="@dimen/textMedium"
+        android:padding="@dimen/padding_medium"/>
 
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/selectBrand"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/newBrandQuestion"
-                    android:padding="@dimen/padding_medium">
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="@dimen/textBox"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceText"
+        android:layout_below="@+id/codeLabel"
+        android:layout_toRightOf="@+id/priceLabel"
+        android:padding="@dimen/padding_medium"/>
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/existingBrand"
-                        android:text="是"
-                        android:textColor="@color/cyan4"
-                        android:textSize="@dimen/textMedium"
-                        android:textStyle="bold"
-                        android:padding="@dimen/padding_medium"/>
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/newBrand"
-                        android:text="否"
-                        android:textColor="@color/cyan4"
-                        android:textSize="@dimen/textMedium"
-                        android:textStyle="bold"
-                        android:padding="@dimen/padding_medium"/>
-
-                </RadioGroup>
-
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/brandLabel"
-                android:layout_below="@+id/newBrandQuestionFrame"
-                android:textStyle="bold"
-                android:textColor="@color/cyan4"
-                android:textSize="@dimen/textMedium"
-                android:text="车品牌："
-                android:padding="@dimen/padding_medium"/>
-            <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:layout_width="@dimen/textBox"
-                android:layout_height="wrap_content"
-                android:id="@+id/editBrandName"
-                android:layout_toRightOf="@+id/brandLabel"
-                android:layout_below="@+id/newBrandQuestionFrame"
-                android:padding="@dimen/padding_medium"/>
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chooseBrandName"
-                android:layout_toRightOf="@+id/brandLabel"
-                android:layout_below="@+id/newBrandQuestionFrame"
-                android:prompt="@string/brand_prompt"
-                android:background="@android:drawable/btn_dropdown"
-                android:padding="@dimen/padding_medium">
-            </Spinner>
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/newModelQuestionFrame">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/newModelQuestion"
-                    android:textStyle="bold"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:text="车模式已在资料库？"
-                    android:padding="@dimen/padding_medium"/>
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/selectModel"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/newModelQuestion"
-                    android:padding="@dimen/padding_medium">
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/existingModel"
-                        android:text="是"
-                        android:textColor="@color/cyan4"
-                        android:textSize="@dimen/textMedium"
-                        android:textStyle="bold"
-                        android:padding="@dimen/padding_medium"/>
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/newModel"
-                        android:text="否"
-                        android:textColor="@color/cyan4"
-                        android:textSize="@dimen/textMedium"
-                        android:textStyle="bold"
-                        android:padding="@dimen/padding_medium"/>
-                </RadioGroup>
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/modelLabel"
-                android:layout_below="@+id/newModelQuestionFrame"
-                android:textColor="@color/cyan4"
-                android:textSize="@dimen/textMedium"
-                android:textStyle="bold"
-                android:text="车模式："
-                android:padding="@dimen/padding_medium"/>
-            <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:layout_width="@dimen/textBox"
-                android:layout_height="wrap_content"
-                android:id="@+id/editModelName"
-                android:layout_toRightOf="@+id/modelLabel"
-                android:layout_below="@+id/newModelQuestionFrame"
-                android:visibility="gone"
-                android:padding="@dimen/padding_medium"/>
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chooseModelName"
-                android:layout_toRightOf="@+id/modelLabel"
-                android:layout_below="@+id/newModelQuestionFrame"
-                android:prompt="@string/model_prompt"
-                android:background="@android:drawable/btn_dropdown"
-                android:padding="@dimen/padding_medium">
-            </Spinner>
-
-        </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:id="@+id/errorFrame"
-                    android:background="@color/red2">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="@dimen/textLarge"
-                        android:textStyle="bold"
-                        android:id="@+id/errorHeader"
-                        android:text="输入错误"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/textMedium"
-                        android:layout_below="@+id/errorHeader"
-                        android:id="@+id/errorMsg"/>
-                    </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/carBrandLabel"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/errorFrame"
-                    android:text="车品牌："
-                    android:padding="@dimen/padding_medium"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:id="@+id/carBrandText"
-                    android:layout_below="@+id/errorFrame"
-                    android:layout_toRightOf="@+id/carBrandLabel"
-                    android:padding="@dimen/padding_medium"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:id="@+id/carModelLabel"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/carBrandLabel"
-                    android:text="车款式："
-                    android:padding="@dimen/padding_medium"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:id="@+id/carModelText"
-                    android:layout_below="@+id/carBrandLabel"
-                    android:layout_toRightOf="@+id/carModelLabel"
-                    android:padding="@dimen/padding_medium"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:id="@+id/carYearLabel"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/carModelLabel"
-                    android:text="车年份："
-                    android:padding="@dimen/padding_medium"/>
-                <com.beardedhen.androidbootstrap.BootstrapEditText
-                    android:layout_width="@dimen/textBoxYear"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/carYearText"
-                    android:maxLength="4"
-                    android:layout_below="@+id/carModelLabel"
-                    android:layout_toRightOf="@+id/carYearLabel"
-                    android:padding="@dimen/padding_medium"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:id="@+id/productCodeLabel"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/carYearLabel"
-                    android:text="号码："
-                    android:padding="@dimen/padding_medium"/>
-                <com.beardedhen.androidbootstrap.BootstrapEditText
-                    android:layout_width="@dimen/textBox"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/productCodeText"
-                    android:layout_below="@+id/carYearLabel"
-                    android:layout_toRightOf="@+id/productCodeLabel"
-                    android:padding="@dimen/padding_medium"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/cyan4"
-                    android:textSize="@dimen/textMedium"
-                    android:textStyle="bold"
-                    android:id="@+id/productPriceLabel"
-                    android:layout_below="@+id/productCodeLabel"
-                    android:text="价钱："
-                    android:padding="@dimen/padding_medium"/>
-                <com.beardedhen.androidbootstrap.BootstrapEditText
-                    android:layout_width="@dimen/textBox"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/productPriceText"
-                    android:layout_below="@+id/productCodeLabel"
-                    android:layout_toRightOf="@+id/productPriceLabel"
-                    android:padding="@dimen/padding_medium"/>
-
-            </RelativeLayout>
-
-        </ScrollView>
-
-    </ViewFlipper>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/backBtn"
-        android:text="返回"
+        android:text="主菜单"
         bootstrap:bb_type="primary"
         android:padding="@dimen/padding_large"
-        android:layout_below="@+id/vf"
+        android:layout_below="@+id/priceLabel"
         android:layout_toLeftOf="@+id/dummyView"/>
     <TextView
         android:layout_width="wrap_content"
@@ -328,16 +94,16 @@
         android:id="@+id/dummyView"
         android:text="qqqqq"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/vf"
+        android:layout_below="@+id/priceLabel"
         android:visibility="invisible"/>
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/nextBtn"
-        android:text="继续"
+        android:text="加新kit"
         bootstrap:bb_type="primary"
         android:padding="@dimen/padding_large"
-        android:layout_below="@+id/vf"
+        android:layout_below="@+id/priceLabel"
         android:layout_toRightOf="@+id/dummyView"/>
 
 </RelativeLayout>

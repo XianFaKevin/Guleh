@@ -19,9 +19,8 @@ public class DisplayProductActivity extends Activity {
     SQLiteHelper dbHelper = new SQLiteHelper(this);
     Product pdt;
     TextView codeHead;
-    TextView priceText;
-    BootstrapButton menuBtn;
-    BootstrapButton backBtn;
+    TextView priceText, priceLabel;
+    BootstrapButton menuBtn, backBtn, editBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +33,19 @@ public class DisplayProductActivity extends Activity {
 
         codeHead = (TextView) findViewById(R.id.codeHeader);
         priceText = (TextView) findViewById(R.id.priceText);
+        priceLabel = (TextView) findViewById(R.id.priceLabel);
         menuBtn = (BootstrapButton) findViewById(R.id.menuBtn);
         backBtn = (BootstrapButton) findViewById(R.id.backBtn);
+        editBtn = (BootstrapButton) findViewById(R.id.editBtn);
 
-        codeHead.setText(pdt.getCode());
-        priceText.setText(String.valueOf(pdt.getPrice()));
+        if (pdt == null) {
+            codeHead.setText("没这号码");
+            priceText.setVisibility(View.INVISIBLE);
+            priceLabel.setVisibility(View.INVISIBLE);
+        } else {
+            codeHead.setText(pdt.getCode());
+            priceText.setText(String.valueOf(pdt.getPrice()));
+        }
 
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +61,16 @@ public class DisplayProductActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), EditActivity.class);
+                i.putExtra("code", pdt.getCode());
+                i.putExtra("price", pdt.getPrice());
+                startActivity(i);
             }
         });
 

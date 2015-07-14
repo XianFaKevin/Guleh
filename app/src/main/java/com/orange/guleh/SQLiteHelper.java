@@ -32,9 +32,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // Database creation sql statement
     private static final String TABLE_CREATE_PRODUCTS = "create table "
             + TABLE_PRODUCTS + "(" + COL_CODE
-            + " string primary key, " + COL_BRAND
-            + " string, " + COL_MODEL + " string, " + COL_YEAR + " integer, "
-            + COL_PRICE + " integer, " + COL_IMAGE + " blob);";
+            + " string primary key, " + COL_PRICE + " integer);";
 
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,55 +50,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS);
         onCreate(db);
-    }
-
-    public ArrayList<String> listBrands() {
-        ArrayList<String> list = new ArrayList<String>();
-        String SELECT_QUERY = "Select " + COL_BRAND + " FROM " + TABLE_PRODUCTS + " GROUP BY "
-                + COL_BRAND;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        return list;
-    }
-
-    public ArrayList<String> listModels(String brandname) {
-        ArrayList<String> list = new ArrayList<String>();
-        String SELECT_QUERY = "Select " + COL_MODEL + " FROM " + TABLE_PRODUCTS
-                +" WHERE " + COL_BRAND + " == '" + brandname + "' GROUP BY " + COL_MODEL;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        return list;
-    }
-
-    public ArrayList<String> listYears(String brandname, String modelname) {
-        ArrayList<String> list = new ArrayList<String>();
-        String SELECT_QUERY = "Select " + COL_YEAR + " FROM " + TABLE_PRODUCTS
-                +" WHERE " + COL_BRAND + " == '" + brandname + "' AND "
-                + COL_MODEL + " == '" + modelname + "' GROUP BY " + COL_YEAR;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        return list;
     }
 
     public ArrayList<String> listCodes(String brandname, String modelname, String year) {
@@ -126,10 +75,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COL_CODE, pdt.getCode());
-        values.put(COL_BRAND, pdt.getBrand());
-        values.put(COL_MODEL, pdt.getModel());
-        values.put(COL_YEAR, pdt.getYear());
-        values.put(COL_PRICE, pdt.getPrice());
+        Double d = new Double(pdt.getPrice() * 100);
+        values.put(COL_PRICE, d.intValue());
 
         long result = db.insert(TABLE_PRODUCTS, null, values);
         db.close();
@@ -146,12 +93,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             pdt.setCode(cursor.getString(0));
-            pdt.setBrand(cursor.getString(1));
-            pdt.setModel(cursor.getString(2));
-            pdt.setYear(cursor.getInt(3));
-            pdt.setPrice(cursor.getInt(4));
+            Double d = (double) cursor.getInt(1) / 100;
+            pdt.setPrice(d);
+            return pdt;
         }
-        return pdt;
+        return null;
+    }
+
+    public void update(String code, String c, String p) {
+        Double price = Double.parseDouble(p);
+        price = price * 100;
+        Log.d("price: ", String.valueOf(price));
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COL_CODE, c);
+        values.put(COL_PRICE, price.intValue());
+
+        db.update(TABLE_PRODUCTS, values, COL_CODE + "=?",
+                new String[] {code});
     }
 
     public void reset() {

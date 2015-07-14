@@ -1,11 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.guleh.DisplayProductActivity"
-    xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:background="@drawable/orange"
+    android:layout_height="match_parent" tools:context="com.orange.guleh.EditActivity"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:background="@drawable/orange4"
     android:padding="5dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/displayFrame">
 
@@ -25,8 +25,16 @@
             android:textStyle="bold"
             android:padding="@dimen/padding_medium"
             android:textColor="@color/cyan4"
-            android:text="价钱：$"
-            android:id="@+id/priceLabel"
+            android:text="新号码："
+            android:id="@+id/codeLabel"
+            android:layout_below="@+id/codeHeader"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="@dimen/textBox"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium"
+            android:id="@+id/codeText"
+            android:layout_toRightOf="@+id/codeLabel"
             android:layout_below="@+id/codeHeader"/>
 
         <TextView
@@ -36,27 +44,25 @@
             android:textStyle="bold"
             android:padding="@dimen/padding_medium"
             android:textColor="@color/cyan4"
+            android:text="价钱：$"
+            android:id="@+id/priceLabel"
+            android:layout_below="@+id/codeLabel"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="@dimen/textBox"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium"
             android:id="@+id/priceText"
             android:layout_toRightOf="@+id/priceLabel"
-            android:layout_below="@+id/codeHeader"/>
+            android:layout_below="@+id/codeLabel"/>
 
     </RelativeLayout>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editBtn"
-        android:layout_alignParentRight="true"
-        bootstrap:bb_roundedCorners="true"
-        bootstrap:bb_type="success"
-        android:text="改kit"
-        android:padding="@dimen/padding_large"/>
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="返回"
-        android:id="@+id/backBtn"
+        android:text="取消"
+        android:id="@+id/cancelBtn"
         android:layout_toLeftOf="@+id/dummyView"
         android:layout_below="@+id/displayFrame"
         bootstrap:bb_type="primary"
@@ -75,8 +81,8 @@
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="主菜单"
-        android:id="@+id/menuBtn"
+        android:text="改kit"
+        android:id="@+id/submitBtn"
         android:layout_toRightOf="@+id/dummyView"
         android:layout_below="@+id/displayFrame"
         bootstrap:bb_type="primary"
