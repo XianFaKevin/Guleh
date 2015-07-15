@@ -3,12 +3,22 @@
     android:layout_height="match_parent" tools:context=".MainActivity" android:background="@drawable/orange"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:padding="5dp">
 
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/bb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        bootstrap:bct_image="@drawable/a5"
+        bootstrap:bct_size="xlarge"
+        android:padding="@dimen/padding_medium"/>
+
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="加新产品"
         android:id="@+id/addBtn"
         bootstrap:bb_type="primary"
+        android:layout_below="@+id/bb"
         android:layout_centerHorizontal="true"
         android:padding="@dimen/padding_large"/>
 

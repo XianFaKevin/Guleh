@@ -114,6 +114,24 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 new String[] {code});
     }
 
+    public ArrayList<Product> list() {
+        ArrayList<Product> list = new ArrayList<Product>();
+        String SELECT_QUERY = "SELECT * FROM " + TABLE_PRODUCTS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Product pdt = new Product();
+                pdt.setCode(cursor.getString(0));
+                Double d = (double) cursor.getInt(1) / 100;
+                pdt.setPrice(d);
+                list.add(pdt);
+            } while (cursor.moveToNext());
+        }
+        return list;
+    }
+
     public void reset() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PRODUCTS, null, null);

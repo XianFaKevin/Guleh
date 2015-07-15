@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.guleh.EditActivity"
+    android:layout_height="match_parent" tools:context="com.orange.guleh.EditProductActivity"
     xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:background="@drawable/orange4"
-    android:padding="5dp">
+    android:padding="5dp" android:id="@+id/rr">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.guleh.SearchActivity"
-    android:background="@drawable/orange2" xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rw" android:padding="5dp">
+    android:layout_height="match_parent" android:padding="5dp"
+    tools:context="com.orange.guleh.SearchActivity" android:background="@drawable/orange2"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:id="@+id/rr">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,32 +15,77 @@
         android:textColor="@color/teal"
         android:padding="@dimen/padding_large"/>
 
-    <TextView
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/cyan4"
-        android:textSize="@dimen/textMedium"
-        android:id="@+id/codeLabel"
+        android:id="@+id/search"
         android:layout_below="@+id/header"
-        android:text="kit号码："
-        android:padding="@dimen/padding_medium"/>
+        android:padding="@dimen/padding_small">
 
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_width="@dimen/textBox"
-        android:layout_height="wrap_content"
-        android:id="@+id/codeText"
-        android:layout_below="@+id/header"
-        android:layout_toRightOf="@+id/codeLabel"
-        android:padding="@dimen/padding_medium"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cyan4"
+            android:textSize="@dimen/textMedium"
+            android:id="@+id/codeLabel"
+            android:text="kit号码："
+            android:padding="@dimen/padding_medium"/>
 
-    <com.beardedhen.androidbootstrap.BootstrapButton
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="@dimen/textBox"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchText"
+            android:layout_toRightOf="@+id/codeLabel"
+            android:padding="@dimen/padding_medium"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查价钱"
-        android:id="@+id/button"
-        android:layout_below="@+id/codeLabel"
-        android:layout_centerHorizontal="true"
-        bootstrap:bb_type="primary"
-        android:padding="@dimen/padding_large"/>
+        android:layout_below="@+id/search"
+        android:id="@+id/we">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qqqqqqqqqqqqqqqqqqqqqqqq"
+            android:visibility="invisible"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主菜单"
+            android:id="@+id/menuBtn"
+            android:layout_centerHorizontal="true"
+            bootstrap:bb_type="primary"
+            android:padding="@dimen/padding_large"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部kit"
+            android:id="@+id/listBtn"
+            android:layout_below="@+id/menuBtn"
+            android:layout_centerHorizontal="true"
+            bootstrap:bb_type="primary"
+            android:padding="@dimen/padding_large"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/display"
+        android:layout_toRightOf="@+id/we"
+        android:layout_below="@+id/search"
+        android:padding="@dimen/padding_small">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv">
+
+        </ListView>
+
+    </RelativeLayout>
 
 </RelativeLayout>
