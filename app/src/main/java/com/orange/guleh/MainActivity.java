@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 
     BootstrapButton addBtn;
     BootstrapButton searchBtn;
-    BootstrapCircleThumbnail picture;
+    //BootstrapCircleThumbnail picture;
     Button settingsBtn;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
 
@@ -54,8 +54,8 @@ public class MainActivity extends Activity {
             }
         });
 
-        picture = (BootstrapCircleThumbnail) findViewById(R.id.bb);
-        setImage();
+       // picture = (BootstrapCircleThumbnail) findViewById(R.id.bb);
+        //setImage();
     }
 
     public void settingsDialog(final Activity context) {
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
         alertDialog.show();
     }
 
-    public void setImage() {
+    /*public void setImage() {
         int count = new Random().nextInt(9);
         if (count == 0) picture.setImage(R.drawable.a1);
         else if (count == 1) picture.setImage(R.drawable.a2);
@@ -96,5 +96,5 @@ public class MainActivity extends Activity {
         else if (count == 6) picture.setImage(R.drawable.a8);
         else if (count == 7) picture.setImage(R.drawable.a10);
         else picture.setImage(R.drawable.a12);
-    }
+    }*/
 }
